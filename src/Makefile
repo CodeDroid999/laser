@@ -6,10 +6,10 @@ ODIR = obj
 CC = gcc
 CFLAGS = -I $(IDIR)
 
-_DEPS = laser.h token.h
+_DEPS = riskxvii.h token.h
 DEPS = $(patsubst %, $(IDIR)/%,$(_DEPS))
 
-_MAIN_OBJ =  laser.o
+_MAIN_OBJ =  riskxvii.o
 _PARSE_OBJ = file.o flag.o notify.o
 _DEP_OBJ = alias.o label.o macro.o token.o offset.o 
 _ASM_OBJ = assemble.o operand.o pseudoop.o
@@ -19,16 +19,16 @@ OBJ = $(patsubst %, $(ODIR)/%,$(_OBJ))
 $(ODIR)/%.o: %.c $(DEPS)
 	$(CC) -c -o $@ $< $(CFLAGS)
 
-laser: $(OBJ)
+riskxvii: $(OBJ)
 	$(CC) -o $@ $^ $(CFLAGS)
 
 .PHONY: clean install uninstall
 
 clean:
-	rm -f $(ODIR)/*.o && rm -f laser
+	rm -f $(ODIR)/*.o && rm -f riskxvii
 
 install:
-	cp laser /usr/local/bin
+	cp riskxvii /usr/local/bin
 
 uninstall:
-	rm -f /usr/local/bin/laser
+	rm -f /usr/local/bin/riskxvii
